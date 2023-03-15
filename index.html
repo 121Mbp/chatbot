@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title> CHATBOT </title>
+<link rel="stylesheet" href="rs/swiper.min.css" type="text/css">
+<link rel="stylesheet" href="rs/app.css" type="text/css">
+</head>
+<body>
+	<div id="CB">
+		<div id="wrap">
+			<header id="header">
+				<div class="gnb sub">
+					<div class="safty_area">
+						<h2 class="tit_h2">CHATBOT</h2>
+					</div>
+				</div>
+			</header>
+			<div id="container">
+				<div class="contents">
+					<div class="safty_area">
+						<div class="content-inner">
+							<div class="messages">
+								<p class="messages-date"><span class="current-date">Monday, September 17, 2022</span></p>
+								<!--<div class="message quick-item">
+									<ul class="quick-inner">
+										<li><button type="button" class="btn-item">카메라</button></li>
+										<li><button type="button" class="btn-item">앨범</button></li>
+										<li><button type="button" class="btn-item">신고내용</button></li>
+										<li><button type="button" class="btn-item">문의사항</button></li>
+										<li><button type="button" class="btn-item icon like">like</button></li>
+										<li><button type="button" class="btn-item icon unlike">unlike</button></li>
+										<li><button type="button" class="btn-item">문의사항</button></li>
+										<li><button type="button" class="btn-item">문의사항</button></li>
+									</ul>
+								</div>-->
+								<!-- CHATBOT MESSAGE TYPE -->
+								<!-- <div class="message type-bot">
+									<div class="message-avatar">
+										<span class="avatar-image"><img src="resource/images/chatbot.jpg" alt=""></span>
+										<span class="avatar-name">Chatbot</span>
+									</div>
+									<p class="message-text sprite">
+										안녕하세요. Chatbot입니다. 어떤 문의사항이 있으신가요?
+										<span class="message-date">2018.09.19</span>
+									</p>
+								</div> -->
+								<!-- //CHATBOT MESSAGE TYPE -->
+								<!-- USER MESSAGE TYPE -->
+								<!-- <div class="message type-user">
+									<p class="message-text sprite">
+										회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요? 회원가입은 어떻게 하나요?
+										<span class="message-date">18:37</span>
+									</p>
+								</div> -->
+								<!-- //USER MESSAGE TYPE -->
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- WRITE -->
+		<div class="write write-disable">
+			<div class="safty_area">
+				<div class="write-inner">
+					<div class="write-row write-inset">
+						<div class="write-input">
+							<textarea rows="1" class="write-text" placeholder="메시지 입력" disabled=""></textarea>
+							<button type="button" class="btn-delete sprite hidden">delete</button>
+							<button type="submit" class="btn-submit sprite hidden" disabled="">Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //WRITE -->
+		<!-- LAYERPOPUP -->
+		<div class="layered">
+			<div class="image-cont">
+				<div class="image-inner">
+					<img src="" alt="">
+				</div>
+			</div>
+			<button type="button" class="btn-close sprite hidden">close</button>
+		</div>
+		<!-- //LAYERPOPUP -->
+	</div>
+	<script type="text/javascript" src="rs/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="rs/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="rs/swiper.min.js"></script>
+	<script type="text/javascript" src="rs/app.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		    var timestamp = 1410715640579; //서버 시간
+			var test = true;
+			//챗봇 초기화(chatbot 이름, 언어)
+			var initial = {
+				name: '챗봇',
+				imageUri: 'rs/img/chatbot.png',
+				region: 'ko',
+				platform:  'ios',
+				deviceStr: 'pc'
+			}
+
+			CB.init(initial);
+
+			//chatbot 대화형
+			function intelligence(){
+			    CB.message.state.loading.ai(); //ai 로딩바 호출
+				CB.message.state.prevent();
+
+				//데이타 성공시
+				setTimeout(function(){
+				    var _array = [{message: "문의 내용 : 신고\n아이디 : KXUNX1986CS\nCode : 122223560\n신고 내용 이미지 :\n[img class=\"image-thumb\" src=\"http://menu.mt.co.kr/ize/thumb/2018/01/06/2018012200437259138_1.jpg\" data-image=\"http://menu.mt.co.kr/ize/thumb/2018/01/06/2018012200437259138_1.jpg\"img]\n신고 사유 : ㅇ\n문의 결과 확인 이메일 : ㅇ", delay: 800}]; //배열로 넣어 주세요.
+					//CB.message.state.remove();
+					CB.message.state.ai(timestamp, _array, false);
+					//CB.message.state.unprevent();
+
+					var _data = ['챗봇 이용하기', '다크모드'];
+					/*
+                        camera: 카메라
+                        image: 이미지
+                        like: 좋아요
+                        unlike: 싫어요
+                    */
+					var _key = ['light', 'dark'];
+					var _type = ['common', 'normal'];
+					var _delay = 0;
+					var _line = 0;
+					CB.message.quick(_data, _key, _type, _delay, _line, true);//선택형 시
+				}, 1000);
+			}
+			intelligence();
+
+			//유저 메세지 전송
+			$('.btn-submit').on('click', function(){
+				var _space = $('.write-text').val().replace(/\s|　/gi, '');
+				CB.message.state.clear();
+                if(_space == ''){
+                    $('.write-text').focus();
+                    return false;
+                }
+			    //데이타 보내고 호출
+			    setTimeout(function(){
+			        var	questionData = $('.write-text').val();
+                    	//questionData = questionData.replace(/(?:\r\n|\r|\n)/g, '<br />');
+					CB.message.state.remove();
+                    CB.message.state.user(timestamp, questionData, false, null, null);  //대화형 false
+					CB.message.state.prevent();
+					CB.message.state.loading.ai(); //ai 로딩바 호출
+
+					//데이타 성공시
+					setTimeout(function(){
+						var _data = ['Select Image', 'Camera', '좋아요', '싫어요', '4000', '60000'];
+						/*
+							camera: 카메라
+							image: 이미지
+							like: 좋아요
+							unlike: 싫어요
+						*/
+						var _key = ['image', 'camera', '300', '301', '', ''];
+						var _answer = [
+							{message: '선택해주세요.', delay: 1076},
+							{message: '피드백 메세지 출력중입니다.', delay: 1076},
+							{message: '선택해주세요.', delay: 1076}
+						];
+						var _array = [
+								{message: '1 무엇을 도와드릴까요?', delay: 1200},
+								{message: '2 무엇을 도와드릴까요?2무엇을 도와드릴까요?2무엇을 도와드릴까요?2무엇을 도와드릴까요?2무엇을 도와드릴까요?', delay: 3000},
+								{message: '3 무엇을 도와드릴까요?', delay: 1000}
+							]; //배열로 넣어 주세요.
+
+						var _delay = _answer[0].delay + _answer[1].delay;
+						var _line = _answer.length;
+						var _type = ['nomal', 'nomal', 'common', 'common', 'nomal', 'common'];
+
+						//CB.message.state.remove();
+						if(test){
+						    CB.message.state.ai(timestamp, _answer, true);
+						    //CB.message.type(_data, _key, _delay);//선택형 시
+						    CB.message.quick(_data, _key, _type, _delay, _line, true);//선택형 시
+							//CB.message.state.unprevent();
+							test = false;
+						}else{
+							CB.message.state.ai(timestamp, _array, false);
+						    //CB.message.state.unprevent();
+						    test = true;
+						}
+					}, 1000);
+				}, 1000);
+			});
+
+			//카메라 또는 이미지 선택시
+			//$('.select-box').on('click', '.btn-select', function(){
+			$('.messages').on('click', '.btn-item', function(){
+				var _btnId = $(this).attr('data-key');
+				CB.message.state.clear();
+
+				if(_btnId == 'camera' || _btnId == 'image'){
+				    var wide = 540, //480,
+						high = 353, //720,
+						imgSrc = 'https://ssl.pstatic.net/mimgnews/image/108/2015/10/05/2015100510441261709_1_99_20151005104516.jpg?type=w540';
+								//'http://menu.mt.co.kr/ize/thumb/2018/01/06/2018012200437259138_1.jpg';
+
+
+
+				    //CB.message.state.remove();
+					CB.message.state.user(timestamp, imgSrc, true, imgSrc, wide, high); //이미지형 true
+					CB.message.state.loading.ai(); //ai 로딩바 호출
+					//데이타 성공시
+					setTimeout(function(){
+						var _array = [{message: '다른 문의 사항이 있으신가요?', delay: 1000}]; //배열로 넣어 주세요.
+						//CB.message.state.remove();
+						CB.message.state.ai(timestamp, _array, false);
+						//CB.message.state.unprevent();
+					}, 1000);
+
+				}else if(_btnId == 'like' || _btnId == 'unlike'){
+				    var _word = null;
+
+					CB.message.state.clear();
+
+					switch(_btnId){
+						case 'like': _word = '좋아요';
+							break;
+						case 'unlike': _word = '싫어요';
+							break;
+					}
+
+				    CB.message.state.remove();
+					CB.message.state.loading.ai(); //ai 로딩바 호출
+					//데이타 성공시
+					setTimeout(function(){
+						var _array = [{message: '좋아요를 선택하였습니다.', delay: 2000}, {message: '다른 문의 사항이 있으신가요?', delay: 1000}]; //배열로 넣어 주세요.
+
+						//CB.message.state.remove();
+						CB.message.state.ai(timestamp, _array, false);
+						//CB.message.state.unprevent();
+					}, 1000);
+                }else if(_btnId == 'light'){
+					var _array = [{message: '라이트모드로 이용중이십니다.', delay: 400}, {message: '문의사항이 있으신가요?', delay: 1000}]; //배열로 넣어 주세요.
+
+					CB.message.state.loading.ai(); //ai 로딩바 호출
+					setTimeout(function(){
+						//CB.message.state.remove();
+						CB.message.state.ai(timestamp, _array, false);
+						//CB.message.state.unprevent();
+					}, 1000);
+				}else if(_btnId == 'dark'){
+					var _array = [{message: '다크모드로 전환되었습니다.', delay: 400}]; //배열로 넣어 주세요.
+
+					CB.message.state.loading.ai(); //ai 로딩바 호출
+					setTimeout(function(){
+						$('head').append('<link rel="stylesheet" href="rs/app.dark.css" type="text/css" />');
+						//CB.message.state.remove();
+						CB.message.state.ai(timestamp, _array, false);
+						//CB.message.state.unprevent();
+					}, 1000);
+				}else{
+					var _select = $(this).text();
+					var _array = [{message: '유저님이 선택 하신 항목은 ' + _select + ' 입니다.', delay: 400}]; //배열로 넣어 주세요.
+
+					//CB.message.state.remove();
+					CB.message.state.loading.ai(); //ai 로딩바 호출
+					//데이타 성공시
+					setTimeout(function(){
+					    //CB.message.state.remove();
+				    	CB.message.state.ai(timestamp, _array, false);
+				    	//CB.message.state.unprevent();
+					}, 1000);
+				}
+			});
+
+		});
+	</script>
+
+</body></html>
